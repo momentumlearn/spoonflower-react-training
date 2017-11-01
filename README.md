@@ -32,3 +32,7 @@
 * Review of React and Redux
 * Using react-rails and webpacker to integrate React into a Rails application
 * Project:​ ​Create a taskflow system to move orders from placed to processing to shipped, backed by a Rails application.
+
+## Resources
+
+* [React Lifecycle Explanation](https://medium.com/gitconnected/componentdidmakesense-react-lifecycle-explanation-393dcb19e459)
