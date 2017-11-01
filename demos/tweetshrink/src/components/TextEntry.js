@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import shrinkText, {textOptions} from "../shrinkText";
+import shrinkText from "../shrinkText";
+import PropTypes from 'prop-types';
 
 class TextEntry extends Component {
     constructor() {
@@ -46,6 +47,10 @@ class TextEntry extends Component {
             </div>
         );
     }
+}
+
+TextEntry.propTypes = {
+    options: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
 export default TextEntry;

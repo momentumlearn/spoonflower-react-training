@@ -1,6 +1,7 @@
-import React, {Component} from "react";
+import React from "react";
 import Option from "./Option";
 import {textOptions} from '../shrinkText';
+import PropTypes from 'prop-types';
 
 const Options = ({checkedOptions, setOption}) => {
     return (
@@ -20,5 +21,11 @@ const Options = ({checkedOptions, setOption}) => {
         </div>
     )
 }
+
+Options.propTypes = {
+    setOption: PropTypes.func.isRequired,
+    checkedOptions: PropTypes.arrayOf(PropTypes.string).isRequired
+}
+
 
 export default Options;

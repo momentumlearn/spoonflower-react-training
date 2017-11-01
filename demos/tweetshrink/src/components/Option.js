@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 
 class Option extends Component {
     render() {
@@ -11,6 +12,13 @@ class Option extends Component {
             </div>
         )
     }
+}
+
+Option.propTypes = {
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    checked: PropTypes.bool,
+    onChange: PropTypes.func.isRequired
 }
 
 export default Option;
