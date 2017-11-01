@@ -1,0 +1,18 @@
+{
+    "sizes": [{
+            "id": 1,
+            "name": "Test Swatch",
+            "dimensions": [8, 8]
+        },
+        {
+            "id": 2,
+            "name": "Fat Quarter",
+            "dimensions": [21, 18]
+        },
+        {
+            "id": 3,
+            "name": "Yard",
+            "dimensions": [42, 36]
+        }
+    ]
+}
