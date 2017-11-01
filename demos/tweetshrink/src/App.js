@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import 'shoelace-css/dist/shoelace.css';
 import './App.css';
-import textOptions from './textOptions';
+import Options from "./components/Options";
+import TextEntry from "./components/TextEntry";
+import textOptions from "./textOptions";
+
+// Sample entry: 
+// I like to eat bananas, apples, and grapes with breakfast because I like fruit.
 
 class App extends Component {
     constructor() {
@@ -50,46 +55,14 @@ class App extends Component {
     }
 
     render() {
-        const text = this.state.text;
-        const shrunkText = this.shrinkText();
         return (
             <div className="App container">
                 <h1>TweetShrink</h1>
-                <div className="row">
-                    <div className="col">
-                        <textarea
-                            className="TextEntry-textbox"
-                            placeholder="What do you want to shrink?"
-                            onChange={event => this.updateText(event)}
-                            value={text} />
-                    </div>
-                    <div className="col">
-                        <div className="TextEntry-shrunk-text">
-                            {shrunkText}
-                        </div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                        {text && `${text.length} characters`}
-                    </div>
-                    <div className="col">
-                        {shrunkText && `${shrunkText.length} characters`}
-                    </div>
-                </div>
-                <div className="row options">
-                    <div className="col-12">
-                        <h4>Options</h4>
-                    </div>
-                    {textOptions.map((option, idx) => (
-                        <div key={idx} className="col-6">
-                            <label htmlFor={option.id}>
-                                <input type="checkbox" id={option.id} onChange={this.setOption(option.id)}/> 
-                                {" " + option.label}
-                            </label>
-                        </div>
-                    ))}
-                </div>
+                <TextEntry text={this.state.text} 
+                           shrunkText={this.shrinkText()}
+                           updateText={this.updateText.bind(this)} />
+                <Options checkedOptions={this.state.options}
+                         setOption={this.setOption.bind(this)} />
             </div>
         );
     }
