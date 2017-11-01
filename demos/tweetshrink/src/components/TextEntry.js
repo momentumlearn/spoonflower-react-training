@@ -1,8 +1,41 @@
 import React, {Component} from "react";
+import textOptions from "../textOptions";
 
 class TextEntry extends Component {
+    constructor() {
+        super();
+        this.state = {
+            text: ""
+        }
+    }
+
+    updateText(event) {
+        this.setState({text: event.target.value});
+    }
+
+    shrinkText() {
+        let {text} = this.state;
+        const {options} = this.props;
+
+        if (!text) {
+            return "";
+        }
+
+        let opObj;
+        options.forEach(option => {
+            opObj = textOptions.find(o => o.id === option)
+            if (opObj) {
+                text = opObj.fn(text)
+            }
+        })
+
+        return text;
+    }
+
     render() {
-        const { text, shrunkText, updateText } = this.props;
+        const { text } = this.state;
+        const shrunkText = this.shrinkText();
+
         return (
             <div className="TextEntry">
                 <div className="row">
@@ -10,7 +43,7 @@ class TextEntry extends Component {
                         <textarea
                             className="TextEntry-textbox"
                             placeholder="What do you want to shrink?"
-                            onChange={event => updateText(event)}
+                            onChange={event => this.updateText(event)}
                             value={text}/>
                     </div>
                     <div className="col">

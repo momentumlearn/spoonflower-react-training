@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import Option from "./Option";
 import textOptions from '../textOptions';
 
 const Options = ({checkedOptions, setOption}) => {
@@ -8,13 +9,11 @@ const Options = ({checkedOptions, setOption}) => {
             <div className="row">
                 {textOptions.map((option, idx) => {
                     return <div key={idx} className="col-6">
-                        <label htmlFor={option.id}>
-                            <input
-                                type="checkbox"
-                                id={option.id}
-                                onChange={setOption(option.id)}
-                                checked={checkedOptions.indexOf(option.id) !== -1}/> {" " + option.label}
-                        </label>
+                        <Option
+                            id={option.id}
+                            label={option.label}
+                            checked={checkedOptions.indexOf(option.id) !== -1}
+                            onChange={setOption(option.id)}/>
                     </div>
                 })}
             </div>
