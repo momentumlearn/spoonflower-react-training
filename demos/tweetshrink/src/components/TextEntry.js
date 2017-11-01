@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import textOptions from "../textOptions";
+import shrinkText, {textOptions} from "../shrinkText";
 
 class TextEntry extends Component {
     constructor() {
@@ -13,28 +13,11 @@ class TextEntry extends Component {
         this.setState({text: event.target.value});
     }
 
-    shrinkText() {
-        let {text} = this.state;
-        const {options} = this.props;
-
-        if (!text) {
-            return "";
-        }
-
-        let opObj;
-        options.forEach(option => {
-            opObj = textOptions.find(o => o.id === option)
-            if (opObj) {
-                text = opObj.fn(text)
-            }
-        })
-
-        return text;
-    }
-
     render() {
         const { text } = this.state;
-        const shrunkText = this.shrinkText();
+        const { options } = this.props;
+
+        const shrunkText = shrinkText(text, options);
 
         return (
             <div className="TextEntry">

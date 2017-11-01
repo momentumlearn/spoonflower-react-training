@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import Option from "./Option";
-import textOptions from '../textOptions';
+import {textOptions} from '../shrinkText';
 
 const Options = ({checkedOptions, setOption}) => {
     return (
