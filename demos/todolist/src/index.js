@@ -1,18 +1,20 @@
 import './index.css';
 
+import {applyMiddleware, createStore} from 'redux';
+
 import App from './App';
 import {Provider} from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
+import {loadTodos} from './persistence';
+import logger from 'redux-logger';
 import reducer from "./reducer";
 import registerServiceWorker from './registerServiceWorker';
+import thunk from 'redux-thunk';
 
-const store = createStore(reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
-store.dispatch({type: 'ADD_TODO', payload: "Get some milk"})
-store.dispatch({type: 'ADD_TODO', payload: "Rotate your tires"})
+// loadTodos(store.dispatch);
 
 ReactDOM.render((
     <Provider store={store}>

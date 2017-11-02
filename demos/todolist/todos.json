@@ -1,0 +1,19 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "text": "Drink more milk",
+      "complete": true
+    },
+    {
+      "id": 3,
+      "text": "Study how to call Ajax after dispatch",
+      "complete": false
+    },
+    {
+      "id": 4,
+      "text": "Study how to call Ajax after dispatch",
+      "complete": false
+    }
+  ]
+}

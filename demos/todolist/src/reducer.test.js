@@ -1,4 +1,4 @@
-import {addTodo, changeFilter, clearCompleteTodos, updateTodo} from './actions';
+import {addTodo, changeFilter, clearCompleteTodos, setTodos, updateTodo} from './actions';
 
 import {createStore} from 'redux';
 import reducer from "./reducer";
@@ -51,5 +51,16 @@ test('can clear complete todos', () => {
     expect(store.getState().todos).toHaveLength(1);
     expect(store.getState().todos.map(todo => todo.id)).toContain(1);
     expect(store.getState().todos.map(todo => todo.id)).not.toContain(2);
-    
+})
+
+test('can load todos in bulk', () => {
+    const store = createStore(reducer);
+
+    store.dispatch(setTodos([
+        {id: 3, text: "A", complete: false},
+        {id: 7, text: "B", complete: false}
+    ]))
+
+    expect(store.getState().todos).toHaveLength(2);
+    expect(store.getState().nextId).toBe(8);
 })

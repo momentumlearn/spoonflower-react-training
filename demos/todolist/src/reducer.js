@@ -1,4 +1,4 @@
-import {ADD_TODO, CHANGE_FILTER, CLEAR_COMPLETE_TODOS, UPDATE_TODO} from './actions';
+import {ADD_TODO, CHANGE_FILTER, CLEAR_COMPLETE_TODOS, SET_TODOS, UPDATE_TODO} from './actions';
 
 import update from 'immutability-helper';
 
@@ -59,6 +59,14 @@ const reducer = (state = initialState, action) => {
                 todos: {
                     $apply: (todos) => todos.filter(todo => !todo.complete)
                 }
+            })
+        case SET_TODOS:
+            const todos = action.payload;
+            const maxId = Math.max(...todos.map(todo => todo.id));
+            const nextId = maxId ? maxId + 1 : 1;
+            return update(state, {
+                todos: {$set: todos},
+                nextId: {$set: nextId}
             })
         default:
             return state;

@@ -1,7 +1,10 @@
+import request from 'superagent';
+
 export const ADD_TODO = 'ADD_TODO';
 export const UPDATE_TODO = 'UPDATE_TODO';
 export const CHANGE_FILTER = 'CHANGE_FILTER';
 export const CLEAR_COMPLETE_TODOS = 'CLEAR_COMPLETE_TODOS';
+export const SET_TODOS = 'SET_TODOS';
 
 // const makeActionCreator = function (type) {
 //     return function (payload) {
@@ -11,6 +14,13 @@ export const CLEAR_COMPLETE_TODOS = 'CLEAR_COMPLETE_TODOS';
 //         }
 //     }
 // }
+
+export const setTodos = (todos) => {
+    return {
+        type: SET_TODOS,
+        payload: todos
+    }
+}
 
 export const addTodo = (text) => {
     return {
