@@ -11,25 +11,9 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TODO:
-            // return {
-            //     nextId: state.nextId + 1,
-            //     todos: state.todos.append([
-            //         {id: state.nextId, text: action.payload, complete: false}
-            //     ]),
-            //     filter: state.filter
-            // }
             return update(state, {
-                nextId: {
-                    $apply: (n) => n + 1
-                },
                 todos: {
-                    $push: [
-                        {
-                            id: state.nextId,
-                            text: action.payload,
-                            complete: false
-                        }
-                    ]
+                    $push: [action.payload]
                 }
             })
         case UPDATE_TODO:

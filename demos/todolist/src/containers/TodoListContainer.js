@@ -20,12 +20,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onCheckTodo: (id, complete) => dispatch(updateTodo({id: id, complete: complete}))
-        // onCheckTodo: (id, complete) => {
-        //     return dispatch({
-        //         type: 'UPDATE_TODO',
-        //         payload: {id: id, complete: complete}
-        //     })
-        // }
     }
 }
 

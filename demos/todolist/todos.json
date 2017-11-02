@@ -14,6 +14,26 @@
       "id": 4,
       "text": "Study how to call Ajax after dispatch",
       "complete": false
+    },
+    {
+      "text": "test",
+      "id": 5,
+      "complete": true
+    },
+    {
+      "text": "test",
+      "complete": false,
+      "id": 6
+    },
+    {
+      "text": "test!",
+      "complete": true,
+      "id": 7
+    },
+    {
+      "text": "test!!!",
+      "complete": false,
+      "id": 8
     }
   ]
 }

@@ -13,6 +13,9 @@ class CreateTodo extends Component {
     onCreateEvent(event) {
         event.preventDefault();
         this.props.onCreate(this.state.text);
+        this.setState({
+            text: ''
+        })
     }
 
     render() {

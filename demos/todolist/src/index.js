@@ -14,7 +14,7 @@ import thunk from 'redux-thunk';
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
-// loadTodos(store.dispatch);
+loadTodos(store.dispatch);
 
 ReactDOM.render((
     <Provider store={store}>
