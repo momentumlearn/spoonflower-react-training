@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+
+import {Link} from 'react-router-dom';
 import moment from 'moment';
 
 class NewsStory extends Component {
@@ -11,7 +13,9 @@ class NewsStory extends Component {
                 </h3>
                 <div className="row info">
                     <div className="col">
+                        <Link to={`/stories/${story.source.id}`}>
                         {story.source.name}
+                        </Link>
                     </div>
                     <div
                         className="col"
@@ -22,7 +26,7 @@ class NewsStory extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col">
+                    <div className="col-8">
                         <div className="description">
                             {story.description}
                         </div>
@@ -30,7 +34,7 @@ class NewsStory extends Component {
                             <a target="_blank" href={story.url}>Read the whole story</a>
                         </div>
                     </div>
-                    {story.urlToImage && <div className="col">
+                    {story.urlToImage && <div className="col-4">
                         <div className="image">
                             <img src={story.urlToImage} alt={story.title}/>
                         </div>

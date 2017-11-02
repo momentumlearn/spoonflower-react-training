@@ -1,14 +1,15 @@
 import './index.css';
 
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, HashRouter, MemoryRouter} from 'react-router-dom';
+
 import NewsSite from './components/NewsSite';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render((
-    <BrowserRouter>
+    <HashRouter>
         <NewsSite/>
-    </BrowserRouter>
+    </HashRouter>
 ), document.getElementById('root'));
 registerServiceWorker();

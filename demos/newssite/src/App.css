@@ -1,5 +1,5 @@
-html, body {
-    height: 100%;
+.main {
+    margin-top: 4rem;
 }
 
 .NewsStory {
@@ -12,10 +12,50 @@ html, body {
     margin-bottom: 0.5rem;
 }
 
-.NewsStory .description, .NewsStory .image {
+.NewsStory .description,
+.NewsStory .image {
     margin-bottom: 1rem;
 }
 
 .NewsSources .source {
     margin: 0.5rem 0;
 }
+
+.NavBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem 2rem;
+    z-index: 2;
+}
+
+.NavBar ul {
+    padding: 0;
+    margin: 0;
+}
+
+.NavBar li {
+    display: inline-block;
+    list-style-type: none;
+    padding-right: 20px;
+}
+
+.NavBar a {
+    color: white;
+    display: block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+}
+
+.NavBar a:hover {
+    text-decoration: none;
+}
+
+.NavBar a.active {
+    background-color: white;
+    color: var(--state-primary);
+}
+
+
+

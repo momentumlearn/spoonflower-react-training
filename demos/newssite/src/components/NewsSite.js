@@ -3,6 +3,7 @@ import '../App.css';
 
 import React, {Component} from 'react';
 
+import NavBar from './NavBar';
 import {NavLink} from 'react-router-dom';
 import NewsSources from './NewsSources';
 import NewsStories from './NewsStories';
@@ -59,9 +60,15 @@ class NewsSite extends Component {
             .map(source => source.id);
     }
 
-    storiesToShow() {
+    storiesToShow(sourceId) {
         if (!this.state.stories) {
             return null;
+        }
+
+        if (sourceId) {
+            return this.state.stories.filter(story => {
+                return story.source.id === sourceId
+            })
         }
 
         const sources = this.activeSources();
@@ -90,25 +97,24 @@ class NewsSite extends Component {
         };
 
         return (
-            <div className="App">
+            <div className="App main">
                 <div className="container">
-                    <ul>
-                        <li><NavLink to="/sources">Sources</NavLink></li>
-                        <li><NavLink exact to="/">Stories</NavLink></li>
-                    </ul>
+                    <NavBar sources={this.state.sources} />
                     <Route
                         path="/sources"
-                        render={() => (
-                            <NewsSources
-                            sources={this.state.sources}
-                            onCheck={this.onCheckSource.bind(this)}/>
-                    )}/>
+                        render={() => (<NewsSources
+                        sources={this.state.sources}
+                        onCheck={this
+                        .onCheckSource
+                        .bind(this)}/>)}/>
                     <Route
                         path="/"
                         exact
-                        render={() => (
-                            <NewsStories stories={this.storiesToShow()}/>
-                        )} />
+                        render={() => (<NewsStories stories={this.storiesToShow()}/>)}/>
+                    <Route path="/stories/:sourceId" render={(props) => {
+                        const match = props.match;
+                        return <NewsStories stories={this.storiesToShow(match.params.sourceId)} />
+                    }} />
                 </div>
             </div>
         );
