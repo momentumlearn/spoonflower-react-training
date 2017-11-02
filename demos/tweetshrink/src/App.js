@@ -1,11 +1,13 @@
-import React, {Component} from 'react';
 import 'shoelace-css/dist/shoelace.css';
 import './App.css';
+
+import React, {Component} from 'react';
+
 import Options from "./components/Options";
 import TextEntry from "./components/TextEntry";
 
-// Sample entry: 
-// I like to eat bananas, apples, and grapes with breakfast because I like fruit.
+// Sample entry: I like to eat bananas, apples, and grapes with breakfast
+// because I like fruit.
 
 class App extends Component {
     constructor() {
@@ -34,9 +36,10 @@ class App extends Component {
         return (
             <div className="App container">
                 <h1>TweetShrink</h1>
-                <TextEntry options={this.state.options} />
-                <Options checkedOptions={this.state.options}
-                         setOption={this.setOption.bind(this)} />
+                <TextEntry options={this.state.options}/>
+                <Options
+                    checkedOptions={this.state.options}
+                    setOption={this.setOption.bind(this)}/>
             </div>
         );
     }

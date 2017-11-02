@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import shrinkText from "../shrinkText";
+
 import PropTypes from 'prop-types';
+import shrinkText from "../shrinkText";
 
 class TextEntry extends Component {
     constructor() {
@@ -15,8 +16,8 @@ class TextEntry extends Component {
     }
 
     render() {
-        const { text } = this.state;
-        const { options } = this.props;
+        const {text} = this.state;
+        const {options} = this.props;
 
         const shrunkText = shrinkText(text, options);
 
