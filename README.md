@@ -33,6 +33,13 @@
 * Using react-rails and webpacker to integrate React into a Rails application
 * Project:​ ​Create a taskflow system to move orders from placed to processing to shipped, backed by a Rails application.
 
+## Docs
+
+* [ReactJS documentation](https://reactjs.org/docs/hello-world.html)
+* [React Router](https://reacttraining.com/react-router/)
+* [Redux](http://redux.js.org/)
+
 ## Resources
 
 * [React Lifecycle Explanation](https://medium.com/gitconnected/componentdidmakesense-react-lifecycle-explanation-393dcb19e459)
+* [The Right Way to Test React Components](https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22)
