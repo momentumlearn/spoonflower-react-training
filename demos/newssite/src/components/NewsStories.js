@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+
 import NewsStory from './NewsStory';
 
 class NewsStories extends Component {
@@ -20,7 +21,6 @@ class NewsStories extends Component {
                 {this
                     .props
                     .stories
-                    .slice(0, 10)
                     .map((story, idx) => <NewsStory key={idx} story={story}/>)}
             </div>
         );

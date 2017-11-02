@@ -1,13 +1,17 @@
-import React, {Component} from 'react';
-import request from 'superagent';
-import NewsSources from './components/NewsSources';
-import NewsStories from './components/NewsStories';
 import 'shoelace-css/dist/shoelace.css';
-import './App.css';
+import '../App.css';
+
+import React, {Component} from 'react';
+
+import {NavLink} from 'react-router-dom';
+import NewsSources from './NewsSources';
+import NewsStories from './NewsStories';
+import {Route} from 'react-router';
+import request from 'superagent';
 
 const API_KEY = '48ee6a49fa6140bea9eb8ad74e973862';
 
-class App extends Component {
+class NewsSite extends Component {
     constructor() {
         super();
         this.state = {
@@ -16,25 +20,19 @@ class App extends Component {
         }
     }
 
-    loadSources(callback) {
-        if (!callback) {
-            callback = function () {};
-        }
-
+    loadSources() {
         return request
-            .get("http://beta.newsapi.org/v2/sources?language=en")
+            .get("http://beta.newsapi.org/v2/sources?language=en&country=us")
             .set('X-API-Key', API_KEY)
             .end((err, res) => {
                 const sources = res.body.sources;
                 sources.forEach(source => source.active = true)
-                this.setState({
-                    'sources': sources
-                }, callback);
+                this.setState({'sources': sources});
             })
     }
 
     loadStories() {
-        let url = "http://beta.newsapi.org/v2/top-headlines?language=en";
+        let url = "http://beta.newsapi.org/v2/top-headlines?language=en&country=us";
 
         request
             .get(url)
@@ -45,7 +43,8 @@ class App extends Component {
     }
 
     componentWillMount() {
-        this.loadSources(this.loadStories.bind(this));
+        this.loadSources();
+        this.loadStories();
     }
 
     activeSources() {
@@ -55,6 +54,7 @@ class App extends Component {
         return this
             .state
             .sources
+        // .filter(function (source) { return source.active })
             .filter(source => source.active)
             .map(source => source.id);
     }
@@ -76,6 +76,7 @@ class App extends Component {
     }
 
     onCheckSource(sourceId, active) {
+        console.log("onCheckSource", sourceId, active);
         const sources = this.state.sources;
         const source = sources.find(source => source.id === sourceId);
         source.active = active;
@@ -90,33 +91,28 @@ class App extends Component {
 
         return (
             <div className="App">
-                <div
-                    className="container"
-                    style={{
-                    height: '100vh',
-                    display: 'flex'
-                }}>
-                    <div
-                        className="row"
-                        style={{
-                        flex: 1,
-                        display: 'flex'
-                    }}>
-                        <div className="col-3" style={colStyle}>
+                <div className="container">
+                    <ul>
+                        <li><NavLink to="/sources">Sources</NavLink></li>
+                        <li><NavLink exact to="/">Stories</NavLink></li>
+                    </ul>
+                    <Route
+                        path="/sources"
+                        render={() => (
                             <NewsSources
-                                sources={this.state.sources}
-                                onCheck={this
-                                .onCheckSource
-                                .bind(this)}/>
-                        </div>
-                        <div className="col-9" style={colStyle}>
+                            sources={this.state.sources}
+                            onCheck={this.onCheckSource.bind(this)}/>
+                    )}/>
+                    <Route
+                        path="/"
+                        exact
+                        render={() => (
                             <NewsStories stories={this.storiesToShow()}/>
-                        </div>
-                    </div>
+                        )} />
                 </div>
             </div>
         );
     }
 }
 
-export default App;
+export default NewsSite;
