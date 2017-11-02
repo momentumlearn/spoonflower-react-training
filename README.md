@@ -38,6 +38,7 @@
 * [ReactJS documentation](https://reactjs.org/docs/hello-world.html)
 * [React Router](https://reacttraining.com/react-router/)
 * [Redux](http://redux.js.org/)
+* [Jest](https://facebook.github.io/jest/)
 
 ## Resources
 
