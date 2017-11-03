@@ -1,0 +1,14 @@
+{
+    "notes": [
+        {
+            "id": 1,
+            "title": "Grocery List",
+            "text": "Onions\nFruit\nLemons\nMilk"
+        },
+        {
+            "id": 2,
+            "title": "New ideas for BEF technologies",
+            "text": "- Express\n- SQLite\n- Knex - SQL query builder\n- Jest\n- Nunjucks?"
+        }
+    ]
+}
