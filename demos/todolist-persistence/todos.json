@@ -8,7 +8,7 @@
     {
       "id": 3,
       "text": "Study how to call Ajax after dispatch",
-      "complete": false
+      "complete": true
     },
     {
       "id": 4,
@@ -34,6 +34,16 @@
       "text": "test!!!",
       "complete": false,
       "id": 8
+    },
+    {
+      "text": "Get a cup of coffee",
+      "complete": false,
+      "id": 9
+    },
+    {
+      "text": "set up json-server",
+      "complete": false,
+      "id": 10
     }
   ]
 }
