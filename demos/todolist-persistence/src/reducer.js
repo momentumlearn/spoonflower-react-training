@@ -3,7 +3,6 @@ import {ADD_TODO, CHANGE_FILTER, CLEAR_COMPLETE_TODOS, SET_TODOS, UPDATE_TODO} f
 import update from 'immutability-helper';
 
 const initialState = {
-    nextId: 1,
     todos: [],
     filter: 'all'
 }
@@ -12,17 +11,8 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TODO:
             return update(state, {
-                nextId: {
-                    $apply: (n) => n + 1
-                },
                 todos: {
-                    $push: [
-                        {
-                            id: state.nextId,
-                            text: action.payload,
-                            complete: false
-                        }
-                    ]
+                    $push: [action.payload]
                 }
             })
         case UPDATE_TODO:
@@ -55,11 +45,8 @@ const reducer = (state = initialState, action) => {
             })
         case SET_TODOS:
             const todos = action.payload;
-            const maxId = Math.max(...todos.map(todo => todo.id));
-            const nextId = maxId ? maxId + 1 : 1;
             return update(state, {
-                todos: {$set: todos},
-                nextId: {$set: nextId}
+                todos: {$set: todos}
             })
         default:
             return state;

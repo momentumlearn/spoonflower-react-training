@@ -1,13 +1,16 @@
-import {addTodo, changeFilter, clearCompleteTodos, setTodos, updateTodo} from './actions';
+import {addTodoWithoutPersistence, changeFilter, clearCompleteTodos, setTodos, updateTodoWithoutPersistence} from './actions';
 
 import {createStore} from 'redux';
 import reducer from "./reducer";
 
+const updateTodo = updateTodoWithoutPersistence;
+const addTodo = addTodoWithoutPersistence;
+
 const getStoreWithTodos = () => {
     const store = createStore(reducer);
 
-    store.dispatch(addTodo("Write the tests"));
-    store.dispatch(addTodo("Run the tests"));
+    store.dispatch(addTodo({id: 1, text: "Write the tests", complete: false}));
+    store.dispatch(addTodo({id: 2, text: "Run the tests", complete: false}));
 
     return store;
 }
