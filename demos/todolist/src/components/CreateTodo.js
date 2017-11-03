@@ -12,7 +12,10 @@ class CreateTodo extends Component {
 
     onCreateEvent(event) {
         event.preventDefault();
-        this.props.onCreate(this.state.text);
+        if (this.state.text !== '') {
+            this.props.onCreate(this.state.text);
+            this.setState({text: ''});
+        }
     }
 
     render() {
