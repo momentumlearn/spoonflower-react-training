@@ -1,0 +1,12 @@
+.App {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.TodoList {
+    margin-top: 1rem;
+}
+
+.TodoList span {
+    margin-left: 0.5rem;
+}
